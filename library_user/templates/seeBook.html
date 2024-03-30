@@ -1,0 +1,48 @@
+
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Books{% endblock title %}
+
+{% block content %}
+
+
+
+
+<div class="container text-center mb-3">
+    <a  class="btn btn-primary" href="{% url 'seeBook' %}">ALL</a>
+    {% for i in category %}
+ 
+        <a href="{% url 'category_slug' i.slug %}" class="btn btn-primary">{{i.name}}</a>
+
+    {% endfor %}
+</div> 
+
+
+<div class="container mb-5">
+    <button class="px-5 py-2 mb-4 btn btn-success text-white">{{data | length}} result found</button>
+    <div class="row  justify-content-center  gap-4">
+            {% for i in data %}
+            <div class="card pt-2" style="width: 24rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <img style="height: 24rem;" src="{{i.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.title}}</h5>
+                  <p class="card-title">{{i.borrowing_price}}</p>
+                  <p class="card-text">{{i.description | truncatewords:10}}</p>
+                  <a href="{% url 'book_details' i.id %}" class="btn btn-primary">Read more</a>
+                </div>
+              </div>
+
+            {% endfor %}
+                
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+{% endblock content %}

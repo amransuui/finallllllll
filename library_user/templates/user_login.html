@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+
+
+
+
+<div id="body1" class="container-fluid px-1 py-5 mx-auto" style="overflow-x: hidden;height: 100%;background-image: url('{% static 'b5.jpg' %}');background-repeat: no-repeat;background-size: 100% 100%">
+    {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+<div class="text-bg-danger text-white px-4 py-3 rounded relative mt-2" role="alert">
+    <p class="font-bold">Error!</p>
+    <p class="block sm:inline">{{ error }}</p>
+</div>
+{% endfor %} {% endif %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            
+            <div class="card" style=" background-color: rgb(116, 115, 115); padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)">
+                <h2 class="text-center text-white mb-4">Log in here</h2>
+                <form method="post" class="shadow-md border border-gray-200 rounded px-8 pt-6 pb-8 mb-4">
+                    {% csrf_token %} 
+                    
+                    <!-- error handel -->
+                    {% for hidden_field in form.hidden_fields %} {{ hidden_field.errors }} {{ hidden_field }} {% endfor %} 
+    
+    
+                    {% for field in form.visible_fields %}
+                        <div class="mb-4 p-3">
+                            <label class="block text-white text-sm font-bold mb-2" for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>
+                            <input class="shadow appearance-none border border-gray-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="{{ field.name }}" id="{{ field.id_for_label }}" type="{{ field.widget_type }}">
+                        </div>
+    
+                        {% if field.errors %} 
+                            {% for error in field.errors %}
+                                <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                            {% endfor %} 
+                        {% endif %} 
+                    
+                    {% endfor %}
+    
+                    <div class="row justify-content-end mt-4 mb-4">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn btn-primary px-5">Signin</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

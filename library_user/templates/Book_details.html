@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Book Details{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container mb-5">
+    <div class="">
+        <div><img src="{{object.image.url}}" class="" alt="user image"></div>
+    
+        <div>
+            <h5 class="">Name : {{object.title}}</h5>
+                        
+            <p class="">Borrowing Price : {{object.borrowing_price}}</p>
+            <div class="mb-2">
+                Categories : -
+                {% for j in object.category.all %}
+                <button class="btn btn-secondary" disabled>{{j.name}}</button>
+                {% endfor %}
+            </div>
+            <p class=" ">Details : {{object.description}}</p>
+            <a href="{% url 'borrow_book' object.id %}" class="btn btn-info">📖BorrowedBook</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h5 class="">Total comments : {{comments | length}}</h5>
+    <div class="card-body">
+      {% for c in comments %}
+      <div>
+        <div>
+         <span class="">Name -  {{c.user}}</span>  
+       </div>
+        <div>
+           <span class="">Comment - {{c.body}}</span>
+        </div>
+        <div>
+         <span class="">Comment Created Time -  {{c.created_on}}</span>
+        </div>
+      </div>
+      <br><br>
+
+      {% endfor %}
+    </div>
+  </div>
+  <div class="py-12"></div>
+
+
+{% endblock content %}
