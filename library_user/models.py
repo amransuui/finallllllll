@@ -21,12 +21,12 @@ class BorrowedBookModel(models.Model):
 # model for comment
 
 class Comment(models.Model):
-    # related ar value diye ai field ta access kora jabe
+   
     book = models.ForeignKey(BookModel, on_delete = models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='user')
 
     body = models.TextField()
-    # auto coment ar date time show korbe
+   
     created_on = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
