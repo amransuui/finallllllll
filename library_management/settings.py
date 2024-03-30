@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-j235umzg$5wp932wj0ufw7%(6v2jn7avx84($td#9nb!dmx5ae
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://dj-library.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://finallllllll.onrender.com','https://*.127.0.0.1']
 
 # Application definition
 
@@ -44,16 +44,11 @@ INSTALLED_APPS = [
     'core',
     'library_user',
     'library',
-    'allauth.account',
-    'allauth.socialaccount',
+    
     "crispy_forms",
     "crispy_bootstrap5",
 ]
-AUTHENTICATION_BACKENDS = [
-   
-    'allauth.account.auth_backends.AuthenticationBackend',
-   
-]
+
 
 
 
@@ -71,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+   
   
 
 
