@@ -16,20 +16,7 @@ from . import models
 
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.template.loader import render_to_string
-def yourView(request):
-    # Construct your email content
-    email_subject = "please confirm  your mail"
-    email_body = render_to_string("email_template.html", {"context_variable": "value"})
-    
-    # Create EmailMultiAlternatives object
-    email = EmailMultiAlternatives(email_subject, "", to=['recipient@example.com'])
-    email.attach_alternative(email_body, "text/html")
-    
-    # Send the email
-    email.send()
-    
-    # Return a response
-    return HttpResponse("Email sent successfully.")
+
 
 
 
